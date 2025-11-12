@@ -1,0 +1,917 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --marian-blue: #2c5aa0;
+    --marian-gold: #d4af37;
+    --marian-white: #f8f9fa;
+    --marian-dark: #1a365d;
+    --marian-light: #667eea;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+}
+
+/* Prevent horizontal scrolling and improve mobile */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--marian-white) 0%, #e6fffa 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Improve touch targets for mobile */
+button, .nav-link, .song-like {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--marian-blue);
+}
+
+.nav-logo i {
+    color: var(--marian-gold);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--marian-blue);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-login,
+.btn-register {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--marian-blue);
+    border: 2px solid var(--marian-blue);
+}
+
+.btn-register {
+    background: var(--marian-blue);
+    color: white;
+}
+
+.btn-login:hover {
+    background: var(--marian-blue);
+    color: white;
+}
+
+.btn-register:hover {
+    background: var(--marian-dark);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--marian-blue) 0%, var(--marian-light) 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hero-title i {
+    color: var(--marian-gold);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+}
+
+.btn-primary {
+    background: var(--marian-gold);
+    color: var(--marian-dark);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-primary:hover {
+    background: #b8941f;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--marian-blue);
+    transform: translateY(-2px);
+}
+
+/* Sections */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--marian-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.section-title i {
+    color: var(--marian-gold);
+}
+
+/* Featured Songs */
+.featured-songs {
+    padding: 5rem 0;
+    background: white;
+}
+
+.songs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.song-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.song-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.song-badge {
+    background: var(--marian-blue);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.song-like {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-like:hover {
+    color: #e53e3e;
+}
+
+.song-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--marian-dark);
+    margin-bottom: 0.5rem;
+}
+
+.song-artist {
+    color: var(--marian-blue);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.song-description {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.song-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-play,
+.btn-lyrics,
+.btn-download {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+}
+
+.btn-play {
+    background: var(--marian-blue);
+    color: white;
+}
+
+.btn-lyrics {
+    background: transparent;
+    color: var(--marian-blue);
+    border: 1px solid var(--marian-blue);
+}
+
+.btn-download {
+    background: #27ae60;
+    color: white;
+    border: none;
+}
+
+.btn-play:hover {
+    background: var(--marian-dark);
+}
+
+.btn-lyrics:hover {
+    background: var(--marian-blue);
+    color: white;
+}
+
+.btn-download:hover {
+    background: #219653;
+    transform: translateY(-2px);
+}
+
+/* Video Section */
+.video-section {
+    padding: 5rem 0;
+    background: var(--marian-white);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.video-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-thumbnail {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-thumbnail i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail i {
+    opacity: 1;
+}
+
+.video-info {
+    padding: 1.5rem;
+}
+
+.video-info h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5rem;
+    color: var(--marian-dark);
+}
+
+.video-info p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.video-duration {
+    color: var(--marian-blue);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Prayer Section */
+.prayer-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.prayer-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--marian-white);
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    border-left: 5px solid var(--marian-gold);
+}
+
+.prayer-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--marian-dark);
+    margin-bottom: 2rem;
+}
+
+.prayer-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* Rosary Counter */
+.rosary-counter {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.counter-display {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--marian-gold);
+    font-weight: bold;
+}
+
+.btn-pray {
+    background: var(--marian-gold);
+    color: var(--marian-dark);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+.btn-pray:hover {
+    background: #b8941f;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background: var(--marian-dark);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #cbd5e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.social-links a:hover {
+    background: var(--marian-blue);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0aec0;
+}
+
+/* ===== MOBILE RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .btn-login, .btn-register {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Fix hero section for mobile */
+    .hero {
+        min-height: 70vh;
+        margin-top: 80px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Fix container padding */
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Fix section titles */
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Fix song cards for mobile */
+    .songs-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .song-card {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .song-actions {
+        flex-direction: column;
+    }
+
+    .btn-play, .btn-lyrics, .btn-download {
+        width: 100%;
+    }
+
+    /* Fix video cards */
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Fix prayer section */
+    .prayer-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .prayer-card h3 {
+        font-size: 1.5rem;
+    }
+
+    /* Fix footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* Touch device improvements */
+.touch-device .song-card:hover {
+    transform: none;
+}
+
+.touch-device .nav-link:hover {
+    background: none;
+}
+
+/* Better touch feedback */
+button:active, .nav-link:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+
+/* Download progress animation */
+.download-progress {
+    width: 100%;
+    height: 4px;
+    background: #ecf0f1;
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #27ae60;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Animations */
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.prayer-active {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}
+
+/* Modal Styles */
+.lyrics-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideInRight 0.3s ease;
+    margin: 1rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--marian-gold);
+    padding-bottom: 1rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    color: var(--marian-blue);
+}
+
+.modal-body pre {
+    white-space: pre-wrap;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Search Input */
+.search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--marian-gold);
+    border-radius: 30px;
+    font-size: 1.1rem;
+    margin: 1rem auto 2rem;
+    display: block;
+    background: rgba(255,255,255,0.9);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #1a1a2e;
+    color: #e6e6e6;
+}
+
+.dark-mode .song-card,
+.dark-mode .video-card,
+.dark-mode .prayer-card {
+    background: #16213e;
+    color: #e6e6e6;
+    border-color: #0f3460;
+}
+
+.dark-mode-toggle {
+    background: transparent;
+    border: 2px solid var(--marian-gold);
+    color: var(--marian-gold);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--marian-gold);
+    color: var(--marian-dark);
+}
+
+/* Loading Animation */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: var(--marian-gold);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
